@@ -6,7 +6,7 @@ export function TemplateGallery() {
       {TEMPLATES.map((template) => (
         <div
           key={template.name}
-          className="group rounded-xl overflow-hidden border border-gray-200 hover:border-indigo-300 hover:shadow-md transition-all cursor-default"
+          className="group rounded-xl overflow-hidden border border-white/10 hover:border-indigo-500/40 hover:shadow-md transition-all cursor-default"
         >
           <div
             className="h-32 flex items-center justify-center text-white text-sm font-medium"
@@ -17,8 +17,8 @@ export function TemplateGallery() {
               <div className="text-xs opacity-75">{template.category}</div>
             </div>
           </div>
-          <div className="p-3 bg-white">
-            <p className="text-xs text-gray-500 leading-relaxed">{template.description}</p>
+          <div className="p-3 bg-white/[0.03]">
+            <p className="text-xs text-zinc-400 leading-relaxed">{template.description}</p>
           </div>
         </div>
       ))}

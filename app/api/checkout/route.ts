@@ -1,57 +1,37 @@
-import { NextRequest } from 'next/server';
-import { getStripe, APP_URL } from '@/lib/stripe';
-import { getRecord } from '@/lib/store';
-import type { CheckoutRequest } from '@/lib/types';
+import { NextRequest, NextResponse } from 'next/server'
+import { withX402 } from 'x402-next'
+import { getRecord, markPaid } from '@/lib/store'
 
-export async function POST(request: NextRequest) {
-  try {
-    const body = (await request.json()) as CheckoutRequest;
-    const { generationId } = body;
+const WALLET = '0xCc97e4579eeE0281947F15B027f8Cad022933d7e' as const
+const NETWORK = (process.env.X402_NETWORK || 'base-sepolia') as 'base' | 'base-sepolia'
 
-    if (!generationId) {
-      return Response.json({ error: 'generationId is required' }, { status: 400 });
-    }
+const handler = async (request: NextRequest): Promise<NextResponse> => {
+  const body = await request.json()
+  const { generationId } = body as { generationId?: string }
 
-    const record = getRecord(generationId);
-    if (!record) {
-      return Response.json({ error: 'Generation not found' }, { status: 404 });
-    }
-
-    const stripe = getStripe();
-    if (!stripe) {
-      // Demo mode: simulate a successful checkout
-      return Response.json({
-        demo: true,
-        message: 'Stripe not configured. In production, this would create a checkout session.',
-        checkoutUrl: `${APP_URL}/success?session_id=demo_session&gen_id=${generationId}`,
-      });
-    }
-
-    const session = await stripe.checkout.sessions.create({
-      mode: 'payment',
-      line_items: [
-        {
-          price_data: {
-            currency: 'usd',
-            unit_amount: 2900, // $29.00
-            product_data: {
-              name: `PageForge Export — ${record.input.businessName}`,
-              description: 'Clean Next.js landing page code, no watermark, Vercel deploy instructions',
-            },
-          },
-          quantity: 1,
-        },
-      ],
-      success_url: `${APP_URL}/success?session_id={CHECKOUT_SESSION_ID}&gen_id=${generationId}`,
-      cancel_url: `${APP_URL}/generate`,
-      metadata: {
-        generationId,
-      },
-    });
-
-    return Response.json({ checkoutUrl: session.url });
-  } catch (error) {
-    console.error('Checkout error:', error);
-    return Response.json({ error: 'Failed to create checkout session' }, { status: 500 });
+  if (!generationId) {
+    return NextResponse.json({ error: 'generationId is required' }, { status: 400 })
   }
+
+  const record = getRecord(generationId)
+  if (!record) {
+    return NextResponse.json({ error: 'Generation not found' }, { status: 404 })
+  }
+
+  // x402 payment verified by wrapper — mark generation as paid
+  markPaid(generationId)
+
+  return NextResponse.json({
+    paid: true,
+    generationId,
+    message: 'Payment confirmed via x402. Clean export unlocked.',
+  })
 }
+
+export const POST = withX402(handler, WALLET, {
+  price: '$29',
+  network: NETWORK,
+  config: {
+    description: 'PageForge — Clean Export, No Watermark ($29 USDC)',
+  },
+})

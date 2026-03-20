@@ -133,15 +133,15 @@ export default function GeneratePage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#0A0A0F]">
       {/* Header */}
-      <nav className="bg-white border-b border-gray-100 sticky top-0 z-40">
+      <nav className="bg-[#0A0A0F]/95 backdrop-blur border-b border-white/10 sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
             <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-sm">
               PF
             </div>
-            <span className="text-lg font-bold text-gray-900">PageForge</span>
+            <span className="text-lg font-bold text-white">PageForge</span>
           </Link>
           {generation && (
             <button
@@ -158,8 +158,8 @@ export default function GeneratePage() {
         {!generation ? (
           <div className="max-w-2xl mx-auto">
             <div className="text-center mb-8">
-              <h1 className="text-3xl font-bold text-gray-900 mb-2">Generate Your Landing Page</h1>
-              <p className="text-gray-500">Fill in the details below and get a beautiful landing page in seconds.</p>
+              <h1 className="text-3xl font-bold text-white mb-2">Generate Your Landing Page</h1>
+              <p className="text-zinc-400">Fill in the details below and get a beautiful landing page in seconds.</p>
             </div>
 
             <GeneratorForm onGenerate={handleGenerate} isLoading={isGenerating} />
@@ -167,14 +167,14 @@ export default function GeneratePage() {
             {/* Loading overlay */}
             {isGenerating && (
               <div className="mt-8 text-center">
-                <div className="inline-flex flex-col items-center gap-4 bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
+                <div className="inline-flex flex-col items-center gap-4 bg-white/[0.05] rounded-2xl shadow-sm border border-white/10 p-8">
                   <div className="relative">
-                    <div className="w-16 h-16 rounded-full border-4 border-indigo-100 border-t-indigo-600 animate-spin" />
-                    <div className="absolute inset-0 flex items-center justify-center text-2xl">✨</div>
+                    <div className="w-16 h-16 rounded-full border-4 border-indigo-900 border-t-indigo-500 animate-spin" />
+                    <div className="absolute inset-0 flex items-center justify-center text-2xl">&#10024;</div>
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-900">{LOADING_MESSAGES[loadingStep]}</p>
-                    <p className="text-sm text-gray-400 mt-1">This usually takes 5-10 seconds</p>
+                    <p className="font-semibold text-white">{LOADING_MESSAGES[loadingStep]}</p>
+                    <p className="text-sm text-zinc-500 mt-1">This usually takes 5-10 seconds</p>
                   </div>
                   <div className="flex gap-2">
                     {(['analyzing', 'crafting', 'polishing', 'done'] as LoadingStep[]).map((s, i) => (
@@ -183,7 +183,7 @@ export default function GeneratePage() {
                         className={`h-1.5 w-8 rounded-full transition-colors ${
                           (['analyzing', 'crafting', 'polishing', 'done'] as LoadingStep[]).indexOf(loadingStep) >= i
                             ? 'bg-indigo-600'
-                            : 'bg-gray-200'
+                            : 'bg-zinc-700'
                         }`}
                       />
                     ))}
@@ -193,7 +193,7 @@ export default function GeneratePage() {
             )}
 
             {error && (
-              <div className="mt-6 bg-red-50 border border-red-200 text-red-700 rounded-xl p-4 text-sm">
+              <div className="mt-6 bg-red-500/10 border border-red-500/20 text-red-400 rounded-xl p-4 text-sm">
                 <strong>Error:</strong> {error}
               </div>
             )}
@@ -201,19 +201,19 @@ export default function GeneratePage() {
         ) : (
           <div className="space-y-6">
             {/* Success header */}
-            <div className="bg-green-50 border border-green-200 rounded-xl p-4 flex items-center justify-between">
+            <div className="bg-green-500/10 border border-green-500/20 rounded-xl p-4 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <span className="text-2xl">🎉</span>
+                <span className="text-2xl">&#127881;</span>
                 <div>
-                  <p className="font-semibold text-gray-900">Your landing page is ready!</p>
-                  <p className="text-sm text-gray-500">
+                  <p className="font-semibold text-white">Your landing page is ready!</p>
+                  <p className="text-sm text-zinc-400">
                     <strong>{generation.headline}</strong>
                   </p>
                 </div>
               </div>
               <button
                 onClick={() => setGeneration(null)}
-                className="text-sm text-gray-500 hover:text-gray-700 border border-gray-200 px-3 py-1.5 rounded-lg hover:bg-white transition-colors"
+                className="text-sm text-zinc-400 hover:text-white border border-white/20 px-3 py-1.5 rounded-lg hover:bg-white/10 transition-colors"
               >
                 Generate New
               </button>
