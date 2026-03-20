@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { TemplateGallery } from '@/components/TemplateGallery';
-import { X402Checkout } from '@/components/x402/X402Checkout';
+import { PayNow } from '@/components/paynow';
 
 const fadeUp = {
   initial: { opacity: 0, y: 20 },
@@ -350,21 +350,13 @@ export default function HomePage() {
                     </li>
                   ))}
                 </ul>
-                <X402Checkout
-                  endpoint="/api/checkout"
-                  method="POST"
+                <PayNow
                   productName="PageForge Export"
-                  price="$29"
-                  description="Clean Next.js component export. No watermark. Commercial license included."
+                  price={29}
+                  description="Clean Next.js component export. No watermark. Commercial license."
                   onSuccess={() => router.push('/success')}
                   accentColor="#4f46e5"
-                >
-                  <span
-                    className="block text-center py-3 bg-white text-indigo-600 rounded-xl font-semibold hover:bg-indigo-50 transition-colors cursor-pointer"
-                  >
-                    Generate &amp; Export
-                  </span>
-                </X402Checkout>
+                />
               </motion.div>
 
               {/* Unlimited */}
