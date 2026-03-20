@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Geist } from 'next/font/google';
 import { Analytics } from '@/components/Analytics';
+import { CookieBanner } from '@/components/CookieBanner';
 import './globals.css';
 
 const geist = Geist({
@@ -37,31 +38,24 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geist.variable} h-full antialiased dark`}>
       <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "SoftwareApplication",
-              name: "PageForge",
-              description:
-                "Describe your business. Get a beautiful, high-converting landing page in 30 seconds. Powered by Gemini AI.",
-              url: "https://pageforge.ai",
-              applicationCategory: "DesignApplication",
-              operatingSystem: "Web",
-              offers: {
-                "@type": "Offer",
-                price: "29",
-                priceCurrency: "USD",
-                availability: "https://schema.org/InStock",
-              },
-            }),
-          }}
-        />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          "name": "PageForge",
+          "description": "AI landing page generator",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Web",
+          "offers": {
+            "@type": "Offer",
+            "price": "29",
+            "priceCurrency": "USD"
+          }
+        }) }} />
       </head>
       <body className="min-h-full flex flex-col bg-background text-foreground font-sans">
         <Analytics product="pageforge" />
         {children}
+        <CookieBanner />
       </body>
     </html>
   );
