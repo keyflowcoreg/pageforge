@@ -9,6 +9,10 @@ import { FAQAccordion } from '@/components/FAQAccordion';
 import { SocialShare } from '@/components/SocialShare';
 import EmailCapture from '@/components/EmailCapture';
 import { EcosystemFooter } from '@/components/EcosystemFooter';
+import { TrustBar } from '@/components/TrustBar';
+import { ExitIntent } from '@/components/ExitIntent';
+import { SplitText } from '@/components/SplitText';
+import { MagneticButton } from '@/components/MagneticButton';
 
 const FAQ_ITEMS = [
   {
@@ -90,15 +94,10 @@ export default function HomePage() {
               <span>&#10024;</span>
               <span>Powered by Gemini 2.0 Flash</span>
             </motion.div>
-            <motion.h1
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-5xl md:text-7xl font-bold text-white leading-tight mb-6"
-            >
-              Your next landing page<br />
-              is <span className="text-indigo-600">60 seconds</span> away.
-            </motion.h1>
+            <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight mb-6">
+              <SplitText text="Your next landing page is" className="justify-center" delay={0.1} />
+              <SplitText text="60 seconds away." className="justify-center text-indigo-600" delay={0.4} />
+            </h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -115,13 +114,10 @@ export default function HomePage() {
               transition={{ duration: 0.5, delay: 0.4 }}
               className="flex flex-col sm:flex-row justify-center gap-4"
             >
-              <Link
-                href="/generate"
-                className="relative bg-indigo-600 text-white px-10 py-4 rounded-xl font-semibold text-lg hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-900/50 hover:shadow-xl hover:shadow-indigo-800/50 hover:-translate-y-0.5 group"
-              >
+              <MagneticButton className="relative bg-indigo-600 text-white px-10 py-4 rounded-xl font-semibold text-lg hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-900/50 hover:shadow-xl hover:shadow-indigo-800/50 cursor-pointer" onClick={() => router.push('/generate')}>
                 <span className="absolute inset-0 rounded-xl bg-indigo-400 opacity-0 group-hover:opacity-20 animate-pulse" />
                 Generate Your Page — Free
-              </Link>
+              </MagneticButton>
               <a
                 href="#how-it-works"
                 className="border border-white/20 text-zinc-300 px-10 py-4 rounded-xl font-semibold text-lg hover:border-indigo-500/50 transition-colors"
@@ -139,6 +135,16 @@ export default function HomePage() {
             </motion.p>
           </div>
         </section>
+
+        {/* TrustBar */}
+        <div className="max-w-6xl mx-auto px-6">
+          <TrustBar items={[
+            { label: 'Pages Generated', value: 1000, suffix: '+' },
+            { label: 'Templates', value: 5 },
+            { label: 'Generation Time', value: 60, suffix: 's' },
+            { label: 'Satisfaction', value: 98, suffix: '%' },
+          ]} />
+        </div>
 
         {/* Demo widget */}
         <section className="py-16 px-6 bg-[#0A0A0F]">
@@ -540,6 +546,12 @@ export default function HomePage() {
       </main>
 
       <EcosystemFooter currentProduct="PageForge" />
+
+      <ExitIntent
+        heading="Get a free page template"
+        description="Try our premium template before you buy."
+        ctaText="Get free template"
+      />
     </div>
   );
 }
