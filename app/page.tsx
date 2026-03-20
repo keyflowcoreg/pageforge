@@ -8,6 +8,7 @@ import { PayNow } from '@/components/paynow';
 import { FAQAccordion } from '@/components/FAQAccordion';
 import { SocialShare } from '@/components/SocialShare';
 import EmailCapture from '@/components/EmailCapture';
+import { EcosystemFooter } from '@/components/EcosystemFooter';
 
 const FAQ_ITEMS = [
   {
@@ -538,66 +539,7 @@ export default function HomePage() {
         </section>
       </main>
 
-      {/* Ecosystem Cross-sell */}
-      <section className="border-t border-white/10 py-16 mt-20 bg-white/[0.02]">
-        <div className="max-w-6xl mx-auto px-4 text-center">
-          <p className="text-sm text-zinc-500 uppercase tracking-wider mb-4">From the AI Business Factory</p>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-2xl mx-auto">
-            <a href="https://version-absence-fish-kay.trycloudflare.com" target="_blank" rel="noopener" className="p-3 rounded-lg border border-white/10 hover:border-indigo-500/40 transition-colors text-left">
-              <p className="font-medium text-white text-sm">PromptForge</p>
-              <p className="text-xs text-zinc-500">200+ AI Prompts</p>
-            </a>
-            <a href="https://tip-walking-flavor-seen.trycloudflare.com" target="_blank" rel="noopener" className="p-3 rounded-lg border border-white/10 hover:border-indigo-500/40 transition-colors text-left">
-              <p className="font-medium text-white text-sm">SiteForge</p>
-              <p className="text-xs text-zinc-500">AI Landing Pages in 60s</p>
-            </a>
-            <a href="https://exercises-planet-gregory-loud.trycloudflare.com" target="_blank" rel="noopener" className="p-3 rounded-lg border border-white/10 hover:border-indigo-500/40 transition-colors text-left">
-              <p className="font-medium text-white text-sm">CryptoPayKit</p>
-              <p className="text-xs text-zinc-500">Accept Crypto Payments</p>
-            </a>
-            <a href="https://ebony-eliminate-incentives-deborah.trycloudflare.com" target="_blank" rel="noopener" className="p-3 rounded-lg border border-white/10 hover:border-indigo-500/40 transition-colors text-left">
-              <p className="font-medium text-white text-sm">AIToolsRadar</p>
-              <p className="text-xs text-zinc-500">Compare 40+ AI Tools</p>
-            </a>
-            <a href="https://offered-proposition-neighbors-explosion.trycloudflare.com" target="_blank" rel="noopener" className="p-3 rounded-lg border border-white/10 hover:border-indigo-500/40 transition-colors text-left">
-              <p className="font-medium text-white text-sm">Agency Site Grader</p>
-              <p className="text-xs text-zinc-500">Grade Your Website</p>
-            </a>
-            <a href="https://ebooks-script-oral-primarily.trycloudflare.com" target="_blank" rel="noopener" className="p-3 rounded-lg border border-white/10 hover:border-indigo-500/40 transition-colors text-left">
-              <p className="font-medium text-white text-sm">Pricing Calculator</p>
-              <p className="text-xs text-zinc-500">Freelance Pricing</p>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="py-12 px-6 bg-gray-900 text-gray-400">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-8">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-sm">PF</div>
-              <span className="text-white font-bold text-lg">PageForge</span>
-            </div>
-            <div className="flex gap-8 text-sm">
-              <Link href="/privacy" className="hover:text-white transition-colors">Privacy</Link>
-              <Link href="/terms" className="hover:text-white transition-colors">Terms</Link>
-              <button
-                type="button"
-                onClick={() => window.dispatchEvent(new Event('open-cookie-banner'))}
-                className="hover:text-white transition-colors cursor-pointer"
-              >
-                Cookie Settings
-              </button>
-              <a href="mailto:hello@pageforge.ai" className="hover:text-white transition-colors">Contact</a>
-              <Link href="/generate" className="hover:text-white transition-colors">Generator</Link>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 pt-8 text-center text-sm">
-            &copy; 2025 PageForge. AI-powered landing pages. Built with Next.js + Gemini.
-          </div>
-        </div>
-      </footer>
+      <EcosystemFooter currentProduct="PageForge" />
     </div>
   );
 }
