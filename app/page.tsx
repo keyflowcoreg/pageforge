@@ -13,6 +13,7 @@ import { TrustBar } from '@/components/TrustBar';
 import { ExitIntent } from '@/components/ExitIntent';
 import { SplitText } from '@/components/SplitText';
 import { MagneticButton } from '@/components/MagneticButton';
+import { TestimonialCarousel } from '@/components/TestimonialCarousel';
 
 const FAQ_ITEMS = [
   {
@@ -439,50 +440,13 @@ export default function HomePage() {
           <div className="max-w-5xl mx-auto">
             <motion.div {...fadeUp} className="text-center mb-12">
               <h2 className="text-3xl font-bold text-white mb-4">What people are saying</h2>
-              <div className="flex justify-center gap-1 text-amber-400 text-xl mb-2">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
               <p className="text-zinc-500">Join hundreds of founders using PageForge</p>
             </motion.div>
-            <div className="grid md:grid-cols-3 gap-6">
-              {[
-                {
-                  name: 'Marco R.',
-                  role: 'SaaS Founder',
-                  text: 'I had a landing page ready in under 2 minutes. The copy was better than what I would have written myself.',
-                  avatar: 'M',
-                },
-                {
-                  name: 'Sophie L.',
-                  role: 'Freelance Designer',
-                  text: 'I use PageForge for every client kickoff. It generates a great first draft that I refine. Saves me 3-4 hours per project.',
-                  avatar: 'S',
-                },
-                {
-                  name: 'David K.',
-                  role: 'Growth Marketer',
-                  text: 'The exported Next.js code is clean and actually works. Deployed it to Vercel in 5 minutes. Worth every penny.',
-                  avatar: 'D',
-                },
-              ].map((t, i) => (
-                <motion.div
-                  key={t.name}
-                  {...stagger}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="bg-white/[0.03] p-8 rounded-2xl border border-white/10 hover:border-indigo-500/20 hover:shadow-md transition-all"
-                >
-                  <div className="flex gap-1 text-amber-400 mb-4">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                  <p className="text-zinc-300 mb-6 leading-relaxed">{`"${t.text}"`}</p>
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-400 font-bold">
-                      {t.avatar}
-                    </div>
-                    <div>
-                      <p className="font-semibold text-white">{t.name}</p>
-                      <p className="text-sm text-zinc-500">{t.role}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+            <TestimonialCarousel testimonials={[
+              { name: "Marco Rossi", role: "SaaS Founder", company: "LaunchPad", text: "I had a landing page ready in under 2 minutes. The copy was better than what I would have written myself. PageForge is now part of every launch.", rating: 5 },
+              { name: "Sophie Laurent", role: "Freelance Designer", company: "Independent", text: "I use PageForge for every client kickoff. It generates a great first draft that I refine. Saves me 3-4 hours per project.", rating: 5 },
+              { name: "David Kim", role: "Growth Marketer", company: "ScaleUp", text: "The exported Next.js code is clean and actually works. Deployed it to Vercel in 5 minutes. Worth every penny of the Pro export.", rating: 4 },
+            ]} />
           </div>
         </section>
 
