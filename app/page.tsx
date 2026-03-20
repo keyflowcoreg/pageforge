@@ -5,6 +5,36 @@ import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { TemplateGallery } from '@/components/TemplateGallery';
 import { PayNow } from '@/components/paynow';
+import { FAQAccordion } from '@/components/FAQAccordion';
+import { SocialShare } from '@/components/SocialShare';
+import EmailCapture from '@/components/EmailCapture';
+
+const FAQ_ITEMS = [
+  {
+    question: 'How does PageForge generate landing pages?',
+    answer: 'PageForge uses Gemini 2.0 Flash AI to generate complete, responsive landing pages from a simple description of your business. Just fill in a few fields and the AI crafts compelling copy, layout, and styling in seconds.',
+  },
+  {
+    question: 'Do I need design or coding skills?',
+    answer: 'Not at all. PageForge handles everything — design, copywriting, and code generation. You describe your business in plain English and get a production-ready page.',
+  },
+  {
+    question: 'What do I get with the free plan?',
+    answer: 'The free plan includes 1 AI-generated landing page per month with a live preview, shareable link, and basic HTML export. The export includes a PageForge watermark.',
+  },
+  {
+    question: 'What is included in the $29 Pro export?',
+    answer: 'The Pro export gives you clean, production-ready Next.js component code with no watermark, Vercel deploy instructions, and a commercial license to use the page however you want.',
+  },
+  {
+    question: 'Can I edit the generated page?',
+    answer: 'Yes! The exported code is clean Next.js/React that you can customize freely. You own the output — modify the copy, styling, or structure as needed.',
+  },
+  {
+    question: 'What payment methods are accepted?',
+    answer: 'We accept all major credit and debit cards via Stripe, as well as USDC cryptocurrency payments on the Base network.',
+  },
+];
 
 const fadeUp = {
   initial: { opacity: 0, y: 20 },
@@ -473,6 +503,39 @@ export default function HomePage() {
             </motion.div>
           </motion.div>
         </section>
+
+        {/* FAQ */}
+        <section className="py-20 px-6 bg-[#0A0A0F]">
+          <div className="max-w-4xl mx-auto">
+            <FAQAccordion items={FAQ_ITEMS} />
+          </div>
+        </section>
+
+        {/* Email Capture */}
+        <section className="py-20 px-6 bg-white/[0.02]">
+          <div className="max-w-xl mx-auto">
+            <EmailCapture
+              heading="Get page design tips"
+              description="Weekly AI-powered design insights and new templates."
+              accent="indigo"
+            />
+          </div>
+        </section>
+
+        {/* Social Share */}
+        <section className="py-12 px-6 bg-[#0A0A0F]">
+          <div className="max-w-3xl mx-auto text-center">
+            <p className="text-zinc-400 text-sm mb-4">Share PageForge with your network</p>
+            <div className="flex justify-center">
+              <SocialShare
+                url="https://pageforge-phi.vercel.app"
+                title="PageForge — AI Landing Pages in 60 Seconds"
+                description="Generate beautiful, high-converting landing pages with AI. No design skills needed."
+                hashtags={['PageForge', 'AI', 'LandingPage']}
+              />
+            </div>
+          </div>
+        </section>
       </main>
 
       {/* Ecosystem Cross-sell */}
@@ -517,9 +580,16 @@ export default function HomePage() {
               <span className="text-white font-bold text-lg">PageForge</span>
             </div>
             <div className="flex gap-8 text-sm">
-              <a href="#" className="hover:text-white transition-colors">Privacy</a>
-              <a href="#" className="hover:text-white transition-colors">Terms</a>
-              <a href="#" className="hover:text-white transition-colors">Contact</a>
+              <Link href="/privacy" className="hover:text-white transition-colors">Privacy</Link>
+              <Link href="/terms" className="hover:text-white transition-colors">Terms</Link>
+              <button
+                type="button"
+                onClick={() => window.dispatchEvent(new Event('open-cookie-banner'))}
+                className="hover:text-white transition-colors cursor-pointer"
+              >
+                Cookie Settings
+              </button>
+              <a href="mailto:hello@pageforge.ai" className="hover:text-white transition-colors">Contact</a>
               <Link href="/generate" className="hover:text-white transition-colors">Generator</Link>
             </div>
           </div>
