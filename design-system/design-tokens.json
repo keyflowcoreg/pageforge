@@ -1,0 +1,224 @@
+{
+  "color": {
+    "primary": {
+      "$value": "#7C3AED",
+      "$type": "color",
+      "$description": "Brand primary – buttons, links, brand elements"
+    },
+    "on-primary": {
+      "$value": "#FFFFFF",
+      "$type": "color",
+      "$description": "Text/icon color on primary backgrounds"
+    },
+    "secondary": {
+      "$value": "#6366F1",
+      "$type": "color",
+      "$description": "Secondary actions and highlights"
+    },
+    "on-secondary": {
+      "$value": "#FFFFFF",
+      "$type": "color",
+      "$description": "Text/icon color on secondary backgrounds"
+    },
+    "accent": {
+      "$value": "#EC4899",
+      "$type": "color",
+      "$description": "CTAs, badges, focus indicators"
+    },
+    "on-accent": {
+      "$value": "#FFFFFF",
+      "$type": "color",
+      "$description": "Text/icon color on accent backgrounds"
+    },
+    "background": {
+      "$value": "#FAF5FF",
+      "$type": "color",
+      "$description": "Page/app background"
+    },
+    "foreground": {
+      "$value": "#0F172A",
+      "$type": "color",
+      "$description": "Primary text color"
+    },
+    "card": {
+      "$value": "#FFFFFF",
+      "$type": "color",
+      "$description": "Card surface color"
+    },
+    "card-foreground": {
+      "$value": "#0F172A",
+      "$type": "color",
+      "$description": "Text color on card surfaces"
+    },
+    "muted": {
+      "$value": "#F7F3FD",
+      "$type": "color",
+      "$description": "Subtle backgrounds, disabled states"
+    },
+    "muted-foreground": {
+      "$value": "#64748B",
+      "$type": "color",
+      "$description": "Secondary text, placeholders, captions"
+    },
+    "border": {
+      "$value": "#EFE7FC",
+      "$type": "color",
+      "$description": "Dividers and input borders"
+    },
+    "destructive": {
+      "$value": "#DC2626",
+      "$type": "color",
+      "$description": "Errors, destructive actions"
+    },
+    "on-destructive": {
+      "$value": "#FFFFFF",
+      "$type": "color",
+      "$description": "Text/icon on destructive backgrounds"
+    },
+    "ring": {
+      "$value": "#7C3AED",
+      "$type": "color",
+      "$description": "Focus ring / keyboard focus indicator"
+    }
+  },
+  "typography": {
+    "font-heading": {
+      "$value": "Plus Jakarta Sans",
+      "$type": "fontFamily",
+      "$description": "Heading font family"
+    },
+    "font-body": {
+      "$value": "Plus Jakarta Sans",
+      "$type": "fontFamily",
+      "$description": "Body text font family"
+    },
+    "font-mono": {
+      "$value": "JetBrains Mono",
+      "$type": "fontFamily",
+      "$description": "Monospace font for code"
+    },
+    "google-fonts-url": {
+      "$value": "https://fonts.google.com/share?selection.family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400",
+      "$type": "string",
+      "$description": "Google Fonts URL for both heading and body fonts"
+    }
+  },
+  "spacing": {
+    "1": {
+      "$value": "0.25rem",
+      "$type": "dimension",
+      "$description": "4px"
+    },
+    "2": {
+      "$value": "0.5rem",
+      "$type": "dimension",
+      "$description": "8px"
+    },
+    "3": {
+      "$value": "0.75rem",
+      "$type": "dimension",
+      "$description": "12px"
+    },
+    "4": {
+      "$value": "1rem",
+      "$type": "dimension",
+      "$description": "16px"
+    },
+    "6": {
+      "$value": "1.5rem",
+      "$type": "dimension",
+      "$description": "24px"
+    },
+    "8": {
+      "$value": "2rem",
+      "$type": "dimension",
+      "$description": "32px"
+    },
+    "12": {
+      "$value": "3rem",
+      "$type": "dimension",
+      "$description": "48px"
+    },
+    "16": {
+      "$value": "4rem",
+      "$type": "dimension",
+      "$description": "64px"
+    },
+    "24": {
+      "$value": "6rem",
+      "$type": "dimension",
+      "$description": "96px"
+    }
+  },
+  "borderRadius": {
+    "sm": {
+      "$value": "0.25rem",
+      "$type": "dimension"
+    },
+    "md": {
+      "$value": "0.5rem",
+      "$type": "dimension"
+    },
+    "lg": {
+      "$value": "0.75rem",
+      "$type": "dimension"
+    },
+    "xl": {
+      "$value": "1rem",
+      "$type": "dimension"
+    },
+    "2xl": {
+      "$value": "1.5rem",
+      "$type": "dimension"
+    },
+    "full": {
+      "$value": "9999px",
+      "$type": "dimension"
+    }
+  },
+  "shadow": {
+    "sm": {
+      "$value": "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+      "$type": "shadow"
+    },
+    "md": {
+      "$value": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+      "$type": "shadow"
+    },
+    "lg": {
+      "$value": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+      "$type": "shadow"
+    }
+  },
+  "transition": {
+    "fast": {
+      "$value": "150ms ease",
+      "$type": "duration"
+    },
+    "normal": {
+      "$value": "250ms ease",
+      "$type": "duration"
+    },
+    "slow": {
+      "$value": "400ms ease",
+      "$type": "duration"
+    }
+  },
+  "meta": {
+    "project": {
+      "$value": "AI-POWERED LANDING PAGE GENERATOR FOR BUSINESSES, SAAS, AND CREATORS. ONE-CLICK PROFESSIONAL PAGES WITH AI COPY, MODERN DESIGN, AND CONVERSION OPTIMIZATION.",
+      "$type": "string",
+      "$description": "Project name"
+    },
+    "category": {
+      "$value": "SaaS (General)",
+      "$type": "string",
+      "$description": "Product category detected by reasoning engine"
+    },
+    "style": {
+      "$value": "Glassmorphism",
+      "$type": "string",
+      "$description": "Recommended UI style"
+    }
+  }
+}
